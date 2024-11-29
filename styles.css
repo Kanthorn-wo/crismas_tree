@@ -1,0 +1,193 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #101010; /* Dark background to make the lights pop */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Tree container */
+.tree-container {
+    position: relative;
+    width: 300px;
+    height: 500px;
+}
+
+/* Tree structure (triangular layers) */
+.tree {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Star at the top */
+.star {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    background-color: #FFD700; /* Gold color for the star */
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    transform: translateX(-50%);
+    animation: starTwinkle 2s infinite alternate;
+}
+
+/* Tree layers as triangles */
+.tree-layer {
+    position: absolute;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-left: 0 solid transparent;
+    border-right: 0 solid transparent;
+    border-bottom: 0 solid #228B22; /* Green tree color */
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+/* Layer 1: Largest (at the bottom) */
+.layer-1 {
+    top: 400px;
+    border-left: 150px solid transparent;  /* Largest width */
+    border-right: 150px solid transparent;
+    border-bottom: 200px solid #228B22;    /* Largest height */
+}
+
+/* Layer 2: Second largest */
+.layer-2 {
+    top: 300px;
+    border-left: 130px solid transparent;  /* Second largest */
+    border-right: 130px solid transparent;
+    border-bottom: 160px solid #228B22;    /* Second largest height */
+}
+
+/* Layer 3: Medium size */
+.layer-3 {
+    top: 200px;
+    border-left: 110px solid transparent;
+    border-right: 110px solid transparent;
+    border-bottom: 130px solid #228B22;
+}
+
+/* Layer 4: Second smallest */
+.layer-4 {
+    top: 130px;
+    border-left: 90px solid transparent;   /* Second smallest */
+    border-right: 90px solid transparent;
+    border-bottom: 100px solid #228B22;    /* Second smallest height */
+}
+
+/* Layer 5: Smallest (at the top) */
+.layer-5 {
+    top: 80px;
+    border-left: 70px solid transparent;   /* Smallest width */
+    border-right: 70px solid transparent;
+    border-bottom: 70px solid #228B22;     /* Smallest height */
+}
+
+/* Trunk of the tree */
+.tree-trunk {
+    position: absolute;
+    bottom: -160px;
+    left: 50%;
+    width: 60px;
+    height: 100px;
+    background-color: #8B4513; /* Brown trunk */
+    transform: translateX(-50%);
+    border-radius: 10px;
+}
+
+/* Lights */
+.lights {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -25%);
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    z-index: 10; /* Ensure lights appear on top of the tree */
+}
+
+.light {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: flicker 0.5s infinite alternate;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+/* Light colors */
+.red {
+    background-color: #FF5733;
+}
+.green {
+    background-color: #32CD32;
+}
+.blue {
+    background-color: #1E90FF;
+}
+.yellow {
+    background-color: #FFD700;
+}
+.pink {
+    background-color: #FF69B4;
+}
+.orange {
+    background-color: #FFA500;
+}
+.purple {
+    background-color: #800080;
+}
+.white {
+    background-color: #FFFFFF;
+}
+
+/* Flicker effect for the lights */
+@keyframes flicker {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.4;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Positioning the lights around the tree layers */
+.light:nth-child(1) { top: 20px; left: 30px; }
+.light:nth-child(2) { top: 50px; left: 60px; }
+.light:nth-child(3) { top: 90px; left: 110px; }
+.light:nth-child(4) { top: 130px; left: 160px; }
+.light:nth-child(5) { top: 170px; left: 140px; }
+.light:nth-child(6) { top: 210px; left: 110px; }
+.light:nth-child(7) { top: 240px; left: 50px; }
+.light:nth-child(8) { top: 270px; left: 30px; }
+
+@keyframes starTwinkle {
+    0% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.8;
+    }
+}
+
